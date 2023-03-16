@@ -17,6 +17,10 @@ app.use(cors({
     origin: '*'
   }));
 
+app.get("/", (req, res) => {
+    res.send("Welcome to the Carcassonne API! Be sure to use the /api route");
+})
+  
 app.get("/api", (req, res) => {
     res.send("Welcome to the Carcassonne API!");
 })
