@@ -6,8 +6,10 @@ const connectDB = module.exports = async () => {
         useUnifiedTopology: true,
         dbName: 'carcassonne',
     }
+
     try {
-        const conn = await mongoose.connect(process.env.MONGODB_URI, connectionParams);
+        const dburl = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@${process.env.MONGODB_CLUSTER}.moofwku.mongodb.net/?retryWrites=true&w=majority`
+        const conn = await mongoose.connect(dburl, connectionParams);
         console.log("Database connection successful: "+conn.connection.host);
     } catch (error) {
         console.log(error);

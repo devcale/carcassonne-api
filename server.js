@@ -14,7 +14,7 @@ const Score = require('./models/Score');
 const port = process.env.PORT || 5000;
 
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: '*'
   }));
 
 app.get("/api", (req, res) => {
