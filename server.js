@@ -6,12 +6,12 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-const database = require('./database');
-database();
+const connectDB = require('./database');
+
 
 const Score = require('./models/Score');
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 app.use(cors({
     origin: 'http://localhost:3000'
@@ -50,6 +50,8 @@ app.post('/api/score', (req, res) => {
     
   });
 
-
-
-app.listen(process.env.PORT || port, () => {console.log("Server started on port "+process.env.PORT || port)})
+  connectDB().then(()=>{
+    app.listen(port, () => {
+        console.log("Server started on port "+port);
+    })
+  })
