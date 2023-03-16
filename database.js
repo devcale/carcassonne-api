@@ -9,6 +9,7 @@ const connectDB = module.exports = async () => {
 
     try {
         const dburl = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@${process.env.MONGODB_CLUSTER}.moofwku.mongodb.net/?retryWrites=true&w=majority`
+        console.log('trying to connect using user: '+process.env.MONGODB_USER);
         const conn = await mongoose.connect(dburl, connectionParams);
         console.log("Database connection successful: "+conn.connection.host);
     } catch (error) {
