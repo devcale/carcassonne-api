@@ -29,7 +29,7 @@ app.get("/api/leaderboard", async (req, res) => {
     
     let query = {mode: req.query.mode, size: req.query.size}
     try{
-        const result = await Score.find(query).sort({points: -1}).limit(8);
+        const result = await Score.find(query).sort({points: -1}).limit(6);
         res.json({"scores": result});
     } catch(err) {
         res.status(500).json({error: err.message})
